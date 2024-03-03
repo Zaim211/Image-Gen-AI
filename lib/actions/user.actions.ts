@@ -79,8 +79,8 @@ export async function updateCredits(userId: string, creditFee: number) {
         await connectToDatabase();
 
         const updatedUserCredits = await User.findOneAndUpdate(
-            { clerkId: userId }, 
-            { $inc: { credits: creditFee } }, 
+            { _id: userId }, 
+            { $inc: { creditBalance: creditFee } }, 
             { new: true }
         );
 
